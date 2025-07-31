@@ -28,7 +28,7 @@ export const metadata = {
   openGraph: {
     title: "컴포넌트 코드 분석기 | JSX/TSX 자동 문서화",
     description: "React 컴포넌트 코드를 붙여넣으면 props, 사용 예제, 설명을 자동으로 추출해주는 무료 도구입니다.",
-    url: "https://your-domain.com", // 실제 배포시 도메인으로 변경
+    url: "https://auto-docs2.vercel.app", // 실제 배포시 도메인으로 변경
     siteName: "컴포넌트 코드 분석기",
     images: [
       {
