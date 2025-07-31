@@ -1,103 +1,87 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [loading, setLoading] = useState(false);
+  const [input, setInput] = useState('');
+  const [result, setResult] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  // 복사 함수
+  const handleCopy = async () => {
+    if (result) {
+      await navigator.clipboard.writeText(result);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    }
+  };
+
+  const handleAnalyze = async () => {
+    if (!input.trim()) {
+      setResult('코드를 입력해주세요.');
+      return;
+    }
+    try {
+      setLoading(true);
+      setResult('분석 중입니다...');
+      const res = await fetch('/api/claude', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: input }),
+      });
+      const data = await res.json();
+      setResult(data.result);
+
+    } catch (error) {
+      console.error('Error:', error);
+      setResult('분석 중 오류가 발생했습니다.');
+
+    }
+    finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 flex flex-col items-center py-14">
+      <h1 className="text-4xl font-extrabold mb-3 text-blue-700 drop-shadow">
+        🪄 컴포넌트 코드 분석기
+      </h1>
+      <p className="mb-10 text-blue-500 text-lg font-medium">
+        JSX/TSX 컴포넌트 코드를 붙여넣으면 props와 사용 예제를 자동으로 추출해줍니다.
+      </p>
+      <div className="w-full max-w-2xl flex flex-col gap-5">
+        <textarea
+          className="w-full h-56 p-5 rounded-2xl border-0 shadow focus:ring-2 focus:ring-blue-200 font-mono text-blue-900 bg-white/80 transition"
+          placeholder="여기에 JSX/TSX 컴포넌트 코드를 붙여넣으세요"
+          value={input}
+          onChange={e => setInput(e.target.value)}
+        />
+        <button
+          className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3 rounded-full shadow-lg transition disabled:opacity-50"
+          onClick={handleAnalyze}
+          disabled={loading}
+        >
+          {loading ? '분석 중...' : '분석하기'}
+        </button>
+      </div>
+      <div className="w-full max-w-2xl mt-10 bg-white/90 border-0 rounded-3xl p-8 min-h-[120px] shadow-lg relative">
+        {result && (
+          <button
+            className="absolute top-6 right-6 bg-cyan-100 hover:bg-cyan-200 text-blue-700 font-semibold px-4 py-1 rounded-full shadow transition"
+            onClick={handleCopy}
+            disabled={loading}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            {copied ? '복사 완료!' : '복사하기'}
+          </button>
+        )}
+        {result ? (
+          <pre className="whitespace-pre-wrap font-mono text-base text-blue-900">{result}</pre>
+        ) : (
+          <span className="text-blue-300">분석 결과가 여기에 표시됩니다.</span>
+        )}
+      </div>
+    </main>
   );
 }
