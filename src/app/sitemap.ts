@@ -1,18 +1,25 @@
-// src/app/sitemap.ts
+import type { MetadataRoute } from 'next'
 
-export async function generateSitemap() {
-  // 기본 도메인
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://auto-docs2.vercel.app';
-
-  // 사이트맵에 포함할 경로 배열
-  const routes = [
-    '', // 홈
-    // '/about', '/contact' 등 추가 경로
-  ];
-
-  // 각 경로에 대한 사이트맵 객체 반환
-  return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-  }));
+  return [
+    {
+      url: `${baseUrl}`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+  ]
 }
