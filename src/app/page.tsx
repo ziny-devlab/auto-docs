@@ -95,26 +95,26 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 flex flex-col items-center py-14">
-      <h1 className="text-4xl font-extrabold mb-3 text-blue-700 drop-shadow">
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 flex flex-col items-center py-6 sm:py-14 px-3">
+      <h1 className="text-2xl sm:text-4xl font-extrabold mb-3 text-blue-700 drop-shadow text-center">
         🪄 코드 자동 문서화 도구
       </h1>
-      <p className="mb-10 text-blue-500 text-lg font-medium">
+      <p className="mb-6 sm:mb-10 text-blue-500 text-base sm:text-lg font-medium text-center">
         함수, 클래스, 컴포넌트 등 어떤 코드든 붙여넣으면 자동으로 독스와 예제를 만들어줍니다.
       </p>
-      <div className="w-full max-w-2xl flex flex-col gap-5">
-        <div className="text-right text-sm text-blue-400 mb-1">
+      <div className="w-full max-w-2xl flex flex-col gap-5 px-2 sm:px-0">
+        <div className="text-right text-xs sm:text-sm text-blue-400 mb-1">
           오늘 남은 무료 문서화 횟수: {getRemainCount()} / {DAILY_LIMIT}
         </div>
         <textarea
-          className="w-full h-56 p-5 rounded-2xl border-0 shadow focus:ring-2 focus:ring-blue-200 font-mono text-blue-900 bg-white/80 transition"
+          className="w-full h-40 sm:h-56 p-3 sm:p-5 rounded-2xl border-0 shadow focus:ring-2 focus:ring-blue-200 font-mono text-blue-900 bg-white/80 transition text-sm sm:text-base"
           placeholder="여기에 코드 블록을 붙여넣으세요"
           value={input}
           onChange={e => setInput(e.target.value)}
         />
         {isCompleted ? (
           <button
-            className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3 rounded-full shadow-lg transition disabled:opacity-50"
+            className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3 rounded-full shadow-lg transition disabled:opacity-50 text-base sm:text-lg"
             onClick={handleReset}
             disabled={loading}
           >
@@ -122,20 +122,18 @@ export default function Home() {
           </button>
         ) : (
           <button
-            className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3 rounded-full shadow-lg transition disabled:opacity-50"
+            className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold py-3 rounded-full shadow-lg transition disabled:opacity-50 text-base sm:text-lg"
             onClick={handleAnalyze}
-            disabled={loading}
+            disabled={loading || !canRequest()}
           >
             {loading ? '문서화 중...' : '문서화하기'}
-
           </button>
         )}
       </div>
-
-      <div className="w-full max-w-2xl mt-10 bg-white/90 border-0 rounded-3xl p-8 min-h-[120px] shadow-lg relative">
+      <div className="w-full max-w-2xl mt-6 sm:mt-10 bg-white/90 border-0 rounded-3xl p-4 sm:p-8 min-h-[120px] shadow-lg relative px-2 sm:px-0">
         {result && (
           <button
-            className="absolute top-6 right-6 bg-cyan-100 hover:bg-cyan-200 text-blue-700 font-semibold px-4 py-1 rounded-full shadow transition"
+            className="absolute top-4 sm:top-6 right-4 sm:right-6 bg-cyan-100 hover:bg-cyan-200 text-blue-700 font-semibold px-3 sm:px-4 py-1 rounded-full shadow transition text-xs sm:text-base"
             onClick={handleCopy}
             disabled={loading}
           >
@@ -143,7 +141,7 @@ export default function Home() {
           </button>
         )}
         {result ? (
-          <pre className="whitespace-pre-wrap font-mono text-base text-blue-900">{result}</pre>
+          <pre className="whitespace-pre-wrap font-mono text-sm sm:text-base text-blue-900">{result}</pre>
         ) : (
           <span className="text-blue-300">문서화 결과가 여기에 표시됩니다.</span>
         )}
