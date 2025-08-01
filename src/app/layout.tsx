@@ -68,6 +68,7 @@ export default function RootLayout({
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7978124979557033"
           crossOrigin="anonymous">
         </script>
+        <meta name="google-site-verification" content="7c-hxWSiNU5PzB8AG2guO0wdaMTZR_VIoijj14ginAU" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
