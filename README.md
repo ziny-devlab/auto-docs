@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 Auto-Docs
 
-## Getting Started
+자동으로 기술 문서를 요약해주는 웹 서비스입니다.  
+URL만 입력하면, 해당 페이지의 주요 내용을 추출하고 간결하게 정리된 문서로 보여줍니다.
 
-First, run the development server:
+👉 **배포 사이트:** [auto-docs2.vercel.app](https://auto-docs2.vercel.app/)
+
+<br/>
+
+## 📌 주요 기능
+
+- 웹 페이지의 내용을 요약된 기술 문서 형태로 자동 변환
+- URL만 입력하면 즉시 분석 시작
+- 간단한 UI로 누구나 쉽게 사용 가능
+
+<img width="741" height="874" alt="image" src="https://github.com/user-attachments/assets/e60871df-4060-4da2-9dfa-bd5c87a09c34" />
+
+<br/>
+
+## 🛠️ 사용 기술 스택
+
+- **Next.js** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
+- **OpenAI API**
+- **jsdom** – HTML 파싱 및 DOM 추출용
+
+<br/>
+
+## 🚀 사용 방법
+
+1. 사이트에 접속합니다: [auto-docs2.vercel.app](https://auto-docs2.vercel.app/)
+2. 요약하고 싶은 웹 페이지의 URL을 입력합니다.
+3. 잠시 기다리면 AI가 문서를 분석하고 요약 결과를 보여줍니다.
+
+<br/>
+
+## 🧑‍💻 로컬 개발 방법
 
 ```bash
+git clone https://github.com/ziny-devlab/auto-docs.git
+cd auto-docs
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br/>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 환경 변수 예시 (.env.local)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+NEXT_PUBLIC_ANTHROPIC_API_KEY = user_api_key
+```
 
-## Learn More
+<br/>
 
-To learn more about Next.js, take a look at the following resources:
+### 📄 향후 개선 계획
+- 다양한 요약 스타일 옵션 추가
+- 사용자 히스토리 관리 기능
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📬 문의
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+문의나 제안이 있다면 이슈로 남겨주세요!
