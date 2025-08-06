@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 메인 서비스 페이지 -->
+  <url>
+    <loc>https://auto-docs2.vercel.app/</loc>
+    <priority>1.0</priority>
+  </url>
+  <!-- 랜딩 페이지 -->
+  <url>
+    <loc>https://auto-docs2.vercel.app/landing</loc>
+    <priority>0.9</priority>
+  </url>
+  <!-- 외부 프로젝트: Docs Summarizer (Header 링크) -->
+  <url>
+    <loc>https://doc-summary-gold.vercel.app/</loc>
+    <priority>0.5</priority>
+  </url>
+  <!-- 외부 프로젝트: Ziny DevLab (Header 링크) -->
+  <url>
+    <loc>https://ziny-devlab.vercel.app/</loc>
+    <priority>0.5</priority>
+  </url>
+</urlset>
