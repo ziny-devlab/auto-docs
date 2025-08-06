@@ -12,8 +12,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "코드 자동 문서화 도구",
-  description: "함수, 클래스, 컴포넌트 등 어떤 코드든 붙여넣으면 자동으로 문서와 예제를 만들어주는 무료 도구입니다. Markdown/Notion 스타일 지원.",
+  title: "코드 자동 문서화",
+  description:
+    "함수, 클래스, 컴포넌트 등 어떤 코드든 붙여넣으면 자동으로 문서와 예제를 만들어주는 무료 도구입니다. Markdown/Notion 스타일 지원.",
   keywords: [
     "코드 문서화",
     "자동 독스",
@@ -30,16 +31,17 @@ export const metadata = {
     "Notion",
     "프로그래밍",
     "개발자 도구",
-    "코드 분석기"
+    "코드 분석기",
   ],
   openGraph: {
     title: "코드 자동 문서화 도구",
-    description: "함수, 클래스, 컴포넌트 등 어떤 코드든 붙여넣으면 자동으로 문서와 예제를 만들어주는 무료 도구입니다.",
+    description:
+      "함수, 클래스, 컴포넌트 등 어떤 코드든 붙여넣으면 자동으로 문서와 예제를 만들어주는 무료 도구입니다.",
     url: "https://auto-docs2.vercel.app",
     siteName: "코드 자동 문서화 도구",
     images: [
       {
-        url: "/og-image.png",
+        url: "/image.png",
         width: 1200,
         height: 630,
         alt: "코드 자동 문서화 대표 이미지",
@@ -51,11 +53,11 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "코드 자동 문서화 도구",
-    description: "함수, 클래스, 컴포넌트 등 어떤 코드든 붙여넣으면 자동으로 문서와 예제를 만들어주는 무료 도구입니다.",
-    images: ["/og-image.png"],
+    description:
+      "함수, 클래스, 컴포넌트 등 어떤 코드든 붙여넣으면 자동으로 문서와 예제를 만들어주는 무료 도구입니다.",
+    images: ["/image.png"],
   },
 };
-
 
 export default function RootLayout({
   children,
@@ -65,10 +67,15 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7978124979557033"
-          crossOrigin="anonymous">
-        </script>
-        <meta name="google-site-verification" content="7c-hxWSiNU5PzB8AG2guO0wdaMTZR_VIoijj14ginAU" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7978124979557033"
+          crossOrigin="anonymous"
+        ></script>
+        <meta
+          name="google-site-verification"
+          content="7c-hxWSiNU5PzB8AG2guO0wdaMTZR_VIoijj14ginAU"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
