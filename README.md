@@ -13,7 +13,8 @@ URL만 입력하면, 해당 페이지의 주요 내용을 추출하고 간결하
 - URL만 입력하면 즉시 분석 시작
 - 간단한 UI로 누구나 쉽게 사용 가능
 
-<img width="741" height="874" alt="image" src="https://github.com/user-attachments/assets/e60871df-4060-4da2-9dfa-bd5c87a09c34" />
+<img width="1073" height="756" alt="image" src="https://github.com/user-attachments/assets/a48a56c7-a853-445c-90f6-9d9cfd23b556" />
+
 
 <br/>
 
