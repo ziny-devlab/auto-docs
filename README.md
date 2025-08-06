@@ -1,7 +1,7 @@
 # 📝 Auto-Docs
 
-자동으로 기술 문서를 요약해주는 웹 서비스입니다.  
-URL만 입력하면, 해당 페이지의 주요 내용을 추출하고 간결하게 정리된 문서로 보여줍니다.
+코드를 붙여넣으면
+✨ AI가 자동으로 기술 문서를 생성해주는 웹 서비스입니다.
 
 👉 **배포 사이트:** [auto-docs2.vercel.app](https://auto-docs2.vercel.app/)
 
@@ -9,9 +9,10 @@ URL만 입력하면, 해당 페이지의 주요 내용을 추출하고 간결하
 
 ## 📌 주요 기능
 
-- 웹 페이지의 내용을 요약된 기술 문서 형태로 자동 변환
-- URL만 입력하면 즉시 분석 시작
-- 간단한 UI로 누구나 쉽게 사용 가능
+- 코드 → AI 기반 기술 문서로 자동 변환
+- 함수 이름, 설명, 파라미터, 반환값, 사용 예제 등 자동 정리
+- Markdown & Notion 스타일 출력 지원
+- 단 몇 초 만에 문서화 완료
 
 <img width="1073" height="756" alt="image" src="https://github.com/user-attachments/assets/a48a56c7-a853-445c-90f6-9d9cfd23b556" />
 
@@ -24,16 +25,18 @@ URL만 입력하면, 해당 페이지의 주요 내용을 추출하고 간결하
 - **TypeScript**
 - **Tailwind CSS**
 - **OpenAI API**
-- **jsdom** – HTML 파싱 및 DOM 추출용
+- **Babel Parser** – 함수 파싱 및 AST 추출
+- **Code highlighter** – 코드 시각화 처리
 
 <br/>
 
 ## 🚀 사용 방법
 
 1. 사이트에 접속합니다: [auto-docs2.vercel.app](https://auto-docs2.vercel.app/)
-2. 요약하고 싶은 웹 페이지의 URL을 입력합니다.
-3. 잠시 기다리면 AI가 문서를 분석하고 요약 결과를 보여줍니다.
-
+2. JS 함수 또는 유틸 코드를 붙여넣습니다.
+3. 잠시 후, AI가 자동으로 정리된 기술 문서를 생성해줍니다.
+4. 원하는 형식(Markdown or Notion 등)으로 복사해서 사용하세요!
+   
 <br/>
 
 ## 🧑‍💻 로컬 개발 방법
